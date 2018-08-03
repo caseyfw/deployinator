@@ -96,6 +96,7 @@ bool deploy() {
 
   if (!client.verify(JENKINS_SSL_FINGERPRINT, JENKINS_JOB_HOST)) {
     Serial.println("Could not verify certificate.");
+    return false;
   }
 
   client.print(String("POST ") + JENKINS_JOB_PATH + " HTTP/1.1\r\n" +

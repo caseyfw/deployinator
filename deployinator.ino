@@ -99,11 +99,15 @@ bool deploy() {
     return false;
   }
 
-  client.print(String("POST ") + JENKINS_JOB_PATH + " HTTP/1.1\r\n" +
+  String request = String("POST ") + JENKINS_JOB_PATH + " HTTP/1.1\r\n" +
                "Host: " + JENKINS_JOB_HOST + "\r\n" +
                "Authorization: Basic " + JENKINS_AUTH + "\r\n" +
                "User-Agent: SOAR Deployinator v2\r\n" +
-               "Connection: close\r\n\r\n");
+               "Connection: close\r\n\r\n";
+
+  Serial.print("Making request:\n" + request);
+
+  client.print(request);
 
   Serial.println("Request sent.");
 
